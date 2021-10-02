@@ -1,0 +1,19 @@
+{
+  "name": "nats-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "ts-node-dev --rs --notify src/publisher.ts",
+    "client": "ts-node-dev --rs --notify src/client.ts"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-nats-streaming": "^0.3.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3"
+  }
+}

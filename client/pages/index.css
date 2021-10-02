@@ -1,0 +1,24 @@
+body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100%;
+}
+
+html, body > div {
+  height: 100%;
+  width: 100%;
+}
+
+.landing__form {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.landing {
+  margin-bottom: 20px;
+}
