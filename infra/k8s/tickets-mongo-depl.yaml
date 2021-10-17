@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: authdb-depl
+  name: ticketsdb-depl
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mongo
+      app: tickets-mongo
   template:
     metadata:
       labels:
-        app: mongo
+        app: tickets-mongo
     spec:
       containers:
-      - name: mongo
+      - name: tickets-mongo
         image: mongo
         imagePullPolicy: IfNotPresent
         ports:
@@ -22,10 +22,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: authdb-srv
+  name: ticketsdb-srv
 spec:
   selector:
-    app: mongo
+    app: tickets-mongo
   ports:
   - port: 27017
     targetPort: 27017

@@ -2,6 +2,8 @@ import mongoose from 'mongoose';
 import { app } from './app';
 import { DatabaseConnectionError, EnvironmentError } from '@hacommon/common';
 import { natsWrapper } from './nats-wrapper';
+import { TicketCreatedListener } from './events/listeners/ticket-created-listener';
+import { TicketUpdatedListener } from './events/listeners/ticket-updated-listener';
 
 const PORT = 3001;
 
@@ -32,6 +34,8 @@ const start = async () => {
     });
     process.on('SIGINT', () => natsWrapper.client.close());
     process.on('SIGTERM', () => natsWrapper.client.close());
+    new TicketCreatedListener(natsWrapper.client).listen();
+    new TicketUpdatedListener(natsWrapper.client).listen();
     await mongoose.connect(TICKETS_MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,

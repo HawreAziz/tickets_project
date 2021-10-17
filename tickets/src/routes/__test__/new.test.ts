@@ -19,7 +19,7 @@ it("can only be accessed only if the user is signed in", async () => {
     .expect(401);
 });
 
-it("returns a status code other that 401 if the user is signed in", async () => {
+it("returns a status code other than 401 if the user is signed in", async () => {
   const response = await request(app)
     .post('/api/tickets')
     .send({})
